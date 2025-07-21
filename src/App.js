@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 function App() {
 
   const [state, setState] = useState(0);
-
+  const [value, setValue] = useState('ТЕКСТ')
   
 
   const incr = () => {
@@ -22,9 +22,15 @@ function App() {
   return (
     
    <div className="App">
-        <h1>{state}</h1>
-        <button onClick={incr}>incr</button>
-        <button onClick={decr}>decr</button>
+        <div>
+        <h2>{value}</h2>
+          <input type='text' value={value} onChange={e => setValue(e.target.value)}></input>
+        </div>
+       <div>
+          <h1>{state}</h1>
+          <button onClick={incr}>incr</button>
+          <button onClick={decr}>decr</button>
+       </div>
     </div>
   );
 }
