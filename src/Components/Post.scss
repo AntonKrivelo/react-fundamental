@@ -1,0 +1,13 @@
+.post {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid green;
+}
+.btns-delete {
+    padding: 15px;
+    font-size: 15px;
+    cursor: pointer;
+}
