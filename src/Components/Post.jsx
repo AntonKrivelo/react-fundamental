@@ -1,14 +1,17 @@
 import React from 'react';
 import './Post.scss';
 
-const Post = () => {
+const Post = ({post}) => {
   return (
     <div>
       <div className="post">
           <div className="post__content">
-            <strong> 1. JavaScript </strong>
             <div>
-                JavaScript - язык программирования
+                <strong>{post.id}</strong>
+            </div>
+            <strong>{post.title}</strong>
+            <div>
+                {post.description}
             </div>
           </div>
           <div className="post__btns">
