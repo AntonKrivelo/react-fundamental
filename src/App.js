@@ -13,7 +13,7 @@ function App() {
   }
   const decr = () => {
     if(state <= 0) {
-      return 0
+      return 1
     }
     setState(state - 1)
     
