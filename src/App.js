@@ -1,19 +1,13 @@
 import PostList from './Components/PostList';
 import MyButton from './Components/UI/button/MyButton';
 import MyInput from './Components/UI/input/MyInput';
-import React,{useState, useRef} from 'react';
+import React,{useState} from 'react';
 import './styles/App.scss';
 
 
 function App() {
 
-  const bodyInputRef = useRef()
-  
-  const [posts, setPosts] = useState([
-      {id:1, title:'JavaScript', description:'JavaScript - это язык программирования'}, 
-      {id:2, title:'Css', description:'CSS - это язык программирования'},
-      {id:3, title:'HTML', description:'HTML - это язык программирования'},
-  ])
+  const [posts, setPosts] = useState([])
   
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -31,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <h2 style={{textAlign: 'center', marginTop: '20px'}}>Введите необходимые данные для добавления поста:</h2>
       <form>
         <MyInput value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Заголовок поста" />
         <MyInput value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder="Описание поста" />

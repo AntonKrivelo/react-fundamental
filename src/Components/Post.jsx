@@ -7,11 +7,11 @@ const Post = ({post}) => {
       <div className="post">
           <div className="post__content">
             <div>
-                <strong>{post.id}</strong>
+                <strong>ID: {post.id}</strong>
             </div>
-            <strong>{post.title}</strong>
+            <strong>Заголовок: {post.title}</strong>
             <div>
-                {post.description}
+                Описание: {post.description}
             </div>
           </div>
           <div className="post__btns">
