@@ -15,10 +15,9 @@ function App() {
   const addNewPost = (e) => {
     e.preventDefault()
     const newPost = {
-      id: Math.floor(Math.random() * 1000),
+      id: Math.floor(Math.random() * 100),
       title,
       description,
-      
     } 
     setPosts([...posts, newPost])
   }

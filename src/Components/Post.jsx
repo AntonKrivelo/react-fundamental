@@ -1,13 +1,13 @@
 import React from 'react';
 import './Post.scss';
 
-const Post = ({post}) => {
+const Post = ({post, number}) => {
   return (
     <div>
       <div className="post">
           <div className="post__content">
             <div>
-                <strong>ID: {post.id}</strong>
+                <strong>ID: {number}</strong>
             </div>
             <strong>Заголовок: {post.title}</strong>
             <div>
