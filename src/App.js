@@ -15,13 +15,18 @@ function App() {
       {id:3, title:'HTML', description:'HTML - это язык программирования'},
   ])
   
-  const [title, setTitle] = useState('sadsad')
-  const [description, setDescription] = useState('123')
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
 
   const addNewPost = (e) => {
     e.preventDefault()
-    console.log(title)
-    console.log(description)
+    const newPost = {
+      id: Math.floor(Math.random() * 1000),
+      title,
+      description,
+      
+    } 
+    setPosts([...posts, newPost])
   }
 
   return (
