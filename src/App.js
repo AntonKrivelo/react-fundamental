@@ -7,10 +7,10 @@ import './styles/App.scss';
 
 function App() {
 
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
   
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const addNewPost = (e) => {
     e.preventDefault()
@@ -19,7 +19,9 @@ function App() {
       title,
       description,
     } 
-    setPosts([...posts, newPost])
+    setPosts([...posts, newPost]);
+    setTitle('');
+    setDescription('');
   }
 
   return (
