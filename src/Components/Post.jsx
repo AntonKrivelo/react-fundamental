@@ -1,7 +1,13 @@
 import React from 'react';
 import './Post.scss';
+import MyButton from './UI/button/MyButton';
 
-const Post = ({post, number}) => {
+const Post = ({post, number, posts, setPosts}) => {
+
+  const deleteItem = (idToDelete) => {
+    setPosts(prevItems => prevItems.filter(post => post.id !== idToDelete));
+  };
+
   return (
     <div>
       <div className="post">
@@ -15,7 +21,7 @@ const Post = ({post, number}) => {
             </div>
           </div>
           <div className="post__btns">
-              <button className="btns-delete">Удалить</button>
+              <MyButton onClick={() => deleteItem(post.id)} className="btns-delete">Удалить</MyButton>
           </div>
        </div>
     </div>

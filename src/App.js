@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <h2 style={{textAlign: 'center', marginTop: '20px'}}>Введите необходимые данные для добавления поста:</h2>
         <PostForm  posts={posts} setPosts={setPosts} />
-        <PostList posts={posts} title="Список постов 1"/>
+        <PostList posts={posts} setPosts={setPosts} title="Список постов 1"/>
     </div>
   );
 }
