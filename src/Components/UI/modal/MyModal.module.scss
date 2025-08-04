@@ -1,0 +1,29 @@
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    background-color: rgba(166, 166, 166, 0.6);
+}
+
+.modalContent {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: rgba($color: #efefef, $alpha: 1.0);
+    border-radius: 5px;
+    width: 450px;
+    height: 350px;
+    color: #FFF;
+}
+
+.modalActive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
