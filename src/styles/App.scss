@@ -27,3 +27,10 @@
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
+
+.loader-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 45px;
+}

@@ -7,6 +7,7 @@ import MyModal from './Components/UI/modal/MyModal';
 import MyButton from './Components/UI/button/MyButton';
 import './styles/App.scss';
 import { usePosts } from './Components/hooks/usePosts';
+import Loader from './Components/UI/loader/Loader';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -25,9 +26,11 @@ function App() {
 
   async function fetchPosts() {
     setIsPostsLoading(true);
-    const responce = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    setPosts(responce.data);
-    setIsPostsLoading(false);
+    setTimeout(async () => {
+      const responce = await axios.get('https://jsonplaceholder.typicode.com/posts');
+      setPosts(responce.data);
+      setIsPostsLoading(false);
+    }, 2000);
   }
 
   return (
@@ -52,9 +55,9 @@ function App() {
         </h2>
       )}
       {isPostsLoading ? (
-        <h2 style={{ textAlign: 'center', marginTop: '30px', fontSize: '30px', fontWeight: '700' }}>
-          Идет загрузка...
-        </h2>
+        <div className="loader-block">
+          <Loader />
+        </div>
       ) : (
         <PostList posts={sortedAndSearchPosts} setPosts={setPosts} title={null} />
       )}
