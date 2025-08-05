@@ -16,7 +16,9 @@ const PostForm = ({ posts, setPosts, setVisibleModal }) => {
     setPosts([...posts, newPost]);
     setTitle('');
     setDescription('');
-    setVisibleModal(false);
+    if (setVisibleModal) {
+      setVisibleModal(false);
+    }
   };
 
   return (

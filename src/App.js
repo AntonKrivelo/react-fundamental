@@ -1,10 +1,12 @@
-import { useState, useMemo } from 'react';
-import './styles/App.scss';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import PostList from './Components/PostList';
 import PostForm from './Components/PostForm';
 import PostFilter from './Components/PostFilter';
 import MyModal from './Components/UI/modal/MyModal';
 import MyButton from './Components/UI/button/MyButton';
+import './styles/App.scss';
+import { usePosts } from './Components/hooks/usePosts';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -13,18 +15,20 @@ function App() {
 
   const [modalActive, setModalActive] = useState();
 
-  const sortedPost = useMemo(() => {
-    if (filter.sort) {
-      return [...posts].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]));
-    }
-    return posts;
-  }, [filter.sort, posts]);
+  const [isPostsLoading, setIsPostsLoading] = useState(false);
 
-  const sortedAndSearchPosts = useMemo(() => {
-    return sortedPost.filter((post) =>
-      post.title.toLowerCase().includes(filter.query.toLowerCase()),
-    );
-  }, [filter.query, sortedPost]);
+  const sortedAndSearchPosts = usePosts(posts, filter.sort, filter.query);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  async function fetchPosts() {
+    setIsPostsLoading(true);
+    const responce = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    setPosts(responce.data);
+    setIsPostsLoading(false);
+  }
 
   return (
     <div className="App">
@@ -35,9 +39,8 @@ function App() {
         <PostForm setVisibleModal={setModalActive} posts={posts} setPosts={setPosts} />
       </MyModal>
       <MyButton style={{ marginTop: '30px' }} onClick={() => setModalActive(true)}>
-        Создать пользователя
+        Создать пост
       </MyButton>
-      <PostForm posts={posts} setPosts={setPosts} />
       <hr style={{ marginTop: '30px' }}></hr>
       <PostFilter filter={filter} setFilter={setFilter} />
       {sortedAndSearchPosts.length > 0 ? (
@@ -47,6 +50,13 @@ function App() {
           {' '}
           Посты не найдены...{' '}
         </h2>
+      )}
+      {isPostsLoading ? (
+        <h2 style={{ textAlign: 'center', marginTop: '30px', fontSize: '30px', fontWeight: '700' }}>
+          Идет загрузка...
+        </h2>
+      ) : (
+        <PostList posts={sortedAndSearchPosts} setPosts={setPosts} title={null} />
       )}
     </div>
   );
