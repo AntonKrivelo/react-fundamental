@@ -56,7 +56,7 @@ function App() {
       )}
       {isPostsLoading ? (
         <div className="loader-block">
-          <Loader />
+          <Loader title="Идёт загрузка" />
         </div>
       ) : (
         <PostList posts={sortedAndSearchPosts} setPosts={setPosts} title={null} />
